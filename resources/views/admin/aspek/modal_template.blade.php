@@ -84,6 +84,7 @@
         var respon = '<tr id="tbl-bukti"><td>'+data.nama+'</td><td><a class="btn btn-sm btn-warning" href="'+rute+'"> <i class="fa fa-download"> </i> Unduh Template Terbaru</a> </td></tr>'
         $('#template_{{$i->id_indikator}}').append(respon);
         $('#modal_template{{$i->id_indikator}}').modal('hide');
+        location.reload(true);
       },
       error: function(data){
         $('#btn-save-template{{$i->id_indikator}}').html('Gagal');

@@ -96,6 +96,7 @@
         var respon = '<tr id="tbl-kriteria"><td>'+data.kriteria+'</td><td>'+data.bobot+'</td><td><a class="btn btn-sm btn-danger" href="'+'#'+'"> <i class="fa fa-trash"> </i> Hapus Kriteria Terbaru </a> </td></tr>'
         $('#kriteria_{{$i->id_indikator}}').append(respon);
         $('#modal_kriteria{{$i->id_indikator}}').modal('hide');
+        location.reload(true);
       },
       error: function(data){
         $('#btn-save-kriteria{{$i->id_indikator}}').html('Gagal');

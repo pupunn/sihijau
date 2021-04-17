@@ -91,7 +91,7 @@
         var respon = '<tr><td>'+data.satuan+'</td><td>'+data.simbol+'</td><td><a class="btn btn-sm btn-danger" href="'+'#'+'"> <i class="fa fa-trash"> </i> Hapus Kriteria Terbaru </a> </td></tr>'
         $('#tbl-satuan').append(respon);
         $('#modal_satuan').modal('hide');
-        location.reload();
+        location.reload(true);
       },
       error: function(data){
         $('#btn-save-satuan').html('Gagal');
