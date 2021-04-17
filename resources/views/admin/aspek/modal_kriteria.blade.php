@@ -39,7 +39,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kriteria as $kr)
+                            @php
+                            // use App\Models\Kriteria_penilaian;
+                            $kriterias = App\Models\Kriteria_penilaian::where('id_indikator', $i->id_indikator)->get();
+                            // dd($kriterias);
+                            @endphp
+                            @foreach ($kriterias as $kr)
                             <tr id="tbl-kriteria">
                                 @if ($i->kriteria == null)
 
@@ -50,7 +55,8 @@
                                     {{-- <div endpoint="{{ route('admin.delete.kriteria', $kr->id_kriteria) }}"
                                     class="delete d-inline">
                 </div> --}}
-                <a class="btn btn-sm btn-danger" href="{{ route('admin.delete.kriteria', $kr->id_kriteria) }}">
+                <a class="btn btn-sm btn-danger"
+                    href="{{ route('admin.delete.kriteria', ([$i->id_indikator, $kr->id_kriteria])) }}">
                     <i class="fa fa-trash"> </i> Hapus Kriteria
                 </a>
                 </td>

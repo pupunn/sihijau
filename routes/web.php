@@ -56,7 +56,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/create/template', [AdminController::class, 'storeTemplate'])->name('admin.create.template');
     Route::get('/download/template/{id}', [IndikatorController::class, 'downloadTemplate'])->name('admin.download.template');
     Route::post('/create/kriteria', [AdminController::class, 'storeKriteria'])->name('admin.create.kriteria');
-    Route::get('/delete/kriteria/{id}', [AdminController::class, 'destroyKriteria'])->name('admin.delete.kriteria');
+    Route::get('/delete/kriteria/{idi}/{id}', [AdminController::class, 'destroyKriteria'])->name('admin.delete.kriteria');
     Route::post('/create/satuan', [AdminController::class, 'storeSatuan'])->name('admin.create.satuan');
     Route::get('/delete/satuan/{id}', [AdminController::class, 'destroySatuan'])->name('admin.delete.satuan');
 });

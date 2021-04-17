@@ -36,10 +36,10 @@ class AdminController extends Controller
         $aspek = Aspek::findOrFail($id);
         $satuan = Satuan::all();
         $periode = Periode::all();
-        $kriteria = Kriteria_penilaian::where('id_indikator', $id)->orderBy('bobot', 'asc')->get();
         $indikator = Indikator::where('id_aspek', $id)->get();
+        // $kriteria = Kriteria_penilaian::where('id_indikator', $id)->orderBy('bobot', 'asc')->get();
         // dd($indikator);
-        return view('admin.aspek.indikator', compact('aspek', 'satuan', 'periode', 'indikator', 'kriteria'));
+        return view('admin.aspek.indikator', compact('aspek', 'satuan', 'periode', 'indikator'));
     }
 
     public function storeIndikator(Request $request)
@@ -122,9 +122,10 @@ class AdminController extends Controller
         return response()->json(['success' => 'Data berhasil tersimpan', 'kriteria' => request('kriteria'), 'bobot' => request('bobot')]);
     }
 
-    public function destroyKriteria($id)
+    public function destroyKriteria($idi, $id)
     {
-        $kriteria = Kriteria_penilaian::findOrFail($id);
+        $kriteria = Kriteria_penilaian::where('id_indikator', $idi)->findOrFail($id);
+        // dd($kriteria);
         $kriteria->delete();
 
         return back();
