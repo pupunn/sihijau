@@ -64,12 +64,31 @@ class SekolahController extends Controller
         $password = substr($random, 0, 10);
 
         $user = User::create([
+            'id_sekolah' => $sekolah->id,
             'name' => $sekolah->nama_sekolah,
             'email' => $sekolah->email_operator,
             'password' => Hash::make($password),
         ]);
 
         $user->assignRole('operator sekolah');
+
+        Mail::to($sekolah->email_operator)->send(new PostMail($sekolah->nama_sekolah, $sekolah->npsn, $sekolah->email_operator, $password));
+
+        return redirect()->route('user');
+    }
+
+    public function sendEmail($id)
+    {
+        $sekolah = Sekolah::findOrFail($id);
+
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 10);
+
+        $user = User::where('id_sekolah', $id)->first();
+        // dd($user);
+        $user->update([
+            'password' => Hash::make($password)
+        ]);
 
         Mail::to($sekolah->email_operator)->send(new PostMail($sekolah->nama_sekolah, $sekolah->npsn, $sekolah->email_operator, $password));
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SekolahRequest;
 
 class UserController extends Controller
@@ -83,5 +85,34 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user');
+    }
+
+    public function destroy($id)
+    {
+        $sekolah = Sekolah::findOrFail($id);
+        $user = User::where('id_sekolah', $id)->firstOrFail();
+        $user->delete();
+        $sekolah->delete();
+    }
+
+    public function storeJuri()
+    {
+        $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'id_periode' => Auth::user()->id_periode,
+            'password' => bcrypt('gsrunnes'),
+        ]);
+
+        $user->assignRole('juri');
+
+
+        return response()->json(['success' => 'Data berhasil tersimpan.']);
+    }
+
+    public function destroyJuri($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
     }
 }

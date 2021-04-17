@@ -142,8 +142,14 @@
             </div>
             <div class="modal-footer modal-footer-uniform">
                 <button type="button" class="btn btn-bold btn-pure btn-secondary" data-dismiss="modal">Kembali</button>
+                @if ($skl->is_confirmed == 0)
                 <a href="{{ route('sekolah.setStatus', $skl->id) }}"
                     class="btn btn-bold btn-pure btn-primary float-right"><i class="fa fa-check"></i> Verifikasi</a>
+                @else
+                <a href="{{ route('sekolah.sendEmail', $skl->id) }}"
+                    class="btn btn-bold btn-pure btn-primary float-right"><i class="fa fa-mail"></i> Kirim
+                    Ulang Email </a>
+                @endif
             </div>
             </form>
         </div>

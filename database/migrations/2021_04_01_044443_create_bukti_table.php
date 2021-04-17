@@ -16,16 +16,12 @@ class CreateBuktiTable extends Migration
         Schema::create('bukti', function (Blueprint $table) {
             $table->increments('id_bukti');
             $table->string('path');
-            $table->text('deskripsi');
             $table->string('filetype');
             $table->softDeletes();
             $table->timestamps();
-            
 
             $table->foreignId('id_indikator');
-            $table->foreignId('id_unit');
-
-            
+            $table->foreignId('id_sekolah');
         });
     }
 

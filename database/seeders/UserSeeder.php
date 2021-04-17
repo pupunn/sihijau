@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'password' => bcrypt('12345678'),
+            'id_periode' => 1
         ]);
 
         $admin->assignRole('admin');
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
             'name' => 'Juri',
             'email' => 'juri@mail.com',
             'password' => bcrypt('12345678'),
+            'id_periode' => 1
         ]);
 
         $user->assignRole('juri');
@@ -34,6 +36,7 @@ class UserSeeder extends Seeder
             'name' => 'Operator Sekolah',
             'email' => 'os@mail.com',
             'password' => bcrypt('12345678'),
+            'id_periode' => 1
         ]);
 
         $user->assignRole('operator sekolah');

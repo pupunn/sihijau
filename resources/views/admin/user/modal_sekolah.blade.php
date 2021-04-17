@@ -48,6 +48,7 @@
             document.getElementById("form_add_sekolah").reset();
           }
           $('#modal_add_sekolah').modal('hide');
+          location.reload();
         },
         error: function(data){
           $('#btn-save-sekolah').html('Gagal');

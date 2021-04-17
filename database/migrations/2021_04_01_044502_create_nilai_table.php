@@ -15,18 +15,16 @@ class CreateNilaiTable extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->increments('id_nilai');
-            $table->integer('id_unit');
-            $table->integer('nilai');
+            $table->integer('id_sekolah');
+            $table->integer('nilai')->nullable();
             $table->integer('nilai_juri')->nullable();
-            $table->integer('id_penilai')->nullable();
+            $table->integer('id_juri')->nullable();
             $table->integer('tahun');
             $table->softDeletes();
             $table->timestamps();
-            
+
 
             $table->foreignId('id_indikator');
-
-            
         });
     }
 

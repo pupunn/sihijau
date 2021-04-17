@@ -22,7 +22,7 @@ class CreateIsianTable extends Migration
             
 
             $table->foreignId('id_sub_indikator');
-            $table->foreignId('id_unit');
+            $table->foreignId('id_sekolah');
 
             
         });

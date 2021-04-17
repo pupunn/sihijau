@@ -26,10 +26,12 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <x-footer></x-footer>
+        {{-- <x-footer></x-footer> --}}
     </div>
     @stack('script')
+    <script src="{{ asset('js/backend.js') }}"></script>
     <x-script></x-script>
+    <!-- Scripts -->
 </body>
 
 </html>

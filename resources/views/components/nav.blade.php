@@ -37,6 +37,10 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="
+                        @role('admin') {{ route('admin.dashboard') }}
+                        @else @role('juri') {{ route('juri.dashboard') }} @else {{ route('sekolah.dashboard') }} @endrole
+                        @endrole">Dashboard</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}

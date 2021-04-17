@@ -16,6 +16,7 @@ class CreateSatuanTable extends Migration
         Schema::create('satuan', function (Blueprint $table) {
             $table->increments('id_satuan');
             $table->string('nama_satuan');
+            $table->string('simbol', 100)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

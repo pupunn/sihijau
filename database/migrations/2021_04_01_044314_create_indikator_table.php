@@ -15,18 +15,17 @@ class CreateIndikatorTable extends Migration
     {
         Schema::create('indikator', function (Blueprint $table) {
             $table->increments('id_indikator');
-            $table->string('nama_indikator');
-            $table->integer('urutan');
+            $table->string('nama_indikator', 191);
+            $table->string('urutan', 11);
             $table->integer('tahun');
-            $table->enum('is_pilihan',['0','1']);
+            $table->string('template')->nullable();
             $table->softDeletes();
             $table->timestamps();
-            
+
 
             $table->foreignId('id_aspek');
             $table->foreignId('id_satuan');
-            
-            
+            $table->foreignId('id_periode');
         });
     }
 
