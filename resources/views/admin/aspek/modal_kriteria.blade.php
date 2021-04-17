@@ -34,6 +34,7 @@
                         <thead>
                             <tr>
                                 <th>Kriteria</th>
+                                <th>Satuan</th>
                                 <th>Bobot</th>
                                 <th>Action</th>
                             </tr>
@@ -42,6 +43,7 @@
                             @php
                             // use App\Models\Kriteria_penilaian;
                             $kriterias = App\Models\Kriteria_penilaian::where('id_indikator', $i->id_indikator)->get();
+                            // $satuan = App\Models\Satuan::where('id_indikator', $i->id_indikator)->get();
                             // dd($kriterias);
                             @endphp
                             @foreach ($kriterias as $kr)
@@ -50,6 +52,7 @@
 
                                 @else
                                 <td>{{ $kr->kriteria }}</td>
+                                <td>{{ $i->satuan->simbol }}</td>
                                 <td>{{ $kr->bobot }}</td>
                                 <td>
                                     {{-- <div endpoint="{{ route('admin.delete.kriteria', $kr->id_kriteria) }}"
