@@ -27,9 +27,9 @@ User::where('id', Auth::user()->id)
         <div class="header-menu">
             <div class="header-left">
 
-                <div class="dropdown for-notification">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="notification"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown for-periode">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="periode" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <span class="btn btn-primary">Periode
                             @foreach ($periode as $p)
                             {{ $p->id_periode == session('periode') ? $p->nama : '' }}

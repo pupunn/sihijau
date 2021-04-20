@@ -36,12 +36,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/user/create', [UserController::class, 'store'])->name('user.create.sekolah');
-    Route::get('/download/lampiran/{id}/{i}', [SekolahController::class, 'downloadLampiran'])->name('download.lampiran');
+    Route::get('/download/lampiran/{id}/{i}', [SekolahController::class, 'downloadLampiran'])->name('download.lampirann');
     Route::get('/user/setStatus/{id}', [SekolahController::class, 'setStatus'])->name('sekolah.setStatus');
     Route::get('/user/sendEmail/{id}', [SekolahController::class, 'sendEmail'])->name('sekolah.sendEmail');
     Route::get('/user/edit/{skl:id}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/user/edit/{skl:id}', [UserController::class, 'update'])->name('user.edit.sekolah');
     Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::delete('/sekolah/delete/{id}', [SekolahController::class, 'destroy'])->name('sekolah.delete');
 
     Route::post('/user/juri/create', [UserController::class, 'storeJuri'])->name('user.create.juri');
     Route::delete('/user/juri/delete/{id}', [UserController::class, 'destroyJuri'])->name('user.delete.juri');

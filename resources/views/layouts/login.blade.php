@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'GSR') }}</title>
+    <link rel="icon" href="{{ asset('images/icon-gsr3.png') }}" type="image/x-icon" />
 
 
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>

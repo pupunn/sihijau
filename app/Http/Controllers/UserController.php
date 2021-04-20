@@ -89,6 +89,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+
         $sekolah = Sekolah::findOrFail($id);
         $user = User::where('id_sekolah', $id)->firstOrFail();
         $user->delete();

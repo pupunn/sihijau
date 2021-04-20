@@ -20,7 +20,12 @@
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="current-password" placeholder="Password" />
                 </div>
-                <button type="submit" class="btn solid"> Login </button>
+                <div class="button">
+                    <input type="button" value="Download Panduan"
+                        onclick='location.href=&quot;{{ asset("storage/PANDUAN UNNES GSR 2021.pdf") }} &quot;'
+                        class="btn linear" />
+                    <button type="submit" class="btn solid"> Login </button>
+                </div>
             </form>
             <form action="{{ route('sekolah.daftar') }}" class="sign-up-form">
                 <h2 class="title">Register</h2>

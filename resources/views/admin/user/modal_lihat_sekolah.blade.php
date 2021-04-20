@@ -66,7 +66,7 @@
                                 <tr>
                                     <td>Sertifikat NPSN</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_npsn']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_npsn']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -75,7 +75,7 @@
                                 <tr>
                                     <td>Peta Lokasi</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_peta_lokasi']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_peta_lokasi']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -84,7 +84,7 @@
                                 <tr>
                                     <td>Foto Sekolah</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_foto_sekolah']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_foto_sekolah']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -93,7 +93,7 @@
                                 <tr>
                                     <td>Masterplan Sekolah</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_masterplan']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_masterplan']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -102,7 +102,7 @@
                                 <tr>
                                     <td>Daftar Tabel Luas Bangunan</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_luas_area']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_luas_area']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -111,7 +111,7 @@
                                 <tr>
                                     <td>Daftar Tabel Luas Area Terbuka</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_luas_area_hijau']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_luas_area_hijau']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -120,7 +120,7 @@
                                 <tr>
                                     <td>Daftar Guru dan Karyawan</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_guru_karyawan']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_guru_karyawan']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -129,7 +129,7 @@
                                 <tr>
                                     <td>Daftar Siswa</td>
                                     <td>
-                                        <a href="{{ route('download.lampiran',[$skl->id, 'file_jumlah_siswa']) }}"
+                                        <a href="{{ route('download.lampirann',[$skl->id, 'file_jumlah_siswa']) }}"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-download"></i> Unduh
                                         </a>
@@ -147,7 +147,7 @@
                     class="btn btn-bold btn-pure btn-primary float-right"><i class="fa fa-check"></i> Verifikasi</a>
                 @else
                 <a href="{{ route('sekolah.sendEmail', $skl->id) }}"
-                    class="btn btn-bold btn-pure btn-primary float-right"><i class="fa fa-mail"></i> Kirim
+                    class="btn btn-bold btn-pure btn-primary float-right"><i class="fa fa-envelope"></i> Kirim
                     Ulang Email </a>
                 @endif
             </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\PostMail;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SekolahRequest;
@@ -43,7 +44,7 @@ class SekolahController extends Controller
             "file_jumlah_siswa" => $request['file_jumlah_siswa'] ? request()->file('file_jumlah_siswa')->store('daftar/sekolah') : null,
         ]);
 
-        return redirect()->route('login')->with('success', 'Pendaftaran berhasil dilakukan, silahkan tunggu email kami setelah diverifikasi untuk melakukan login');
+        return view('auth.success')->with('success', 'Pendaftaran berhasil dilakukan, silahkan tunggu email kami setelah diverifikasi untuk melakukan login');
     }
 
     public function downloadLampiran($id, $i)
@@ -60,11 +61,14 @@ class SekolahController extends Controller
         $sekolah->is_confirmed = 1;
         $sekolah->save();
 
+        // dd($sekolah);
+
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
         $password = substr($random, 0, 10);
 
         $user = User::create([
             'id_sekolah' => $sekolah->id,
+            'id_periode' => Auth::user()->id_periode,
             'name' => $sekolah->nama_sekolah,
             'email' => $sekolah->email_operator,
             'password' => Hash::make($password),
@@ -93,5 +97,11 @@ class SekolahController extends Controller
         Mail::to($sekolah->email_operator)->send(new PostMail($sekolah->nama_sekolah, $sekolah->npsn, $sekolah->email_operator, $password));
 
         return redirect()->route('user');
+    }
+
+    public function destroy($id)
+    {
+        $sekolah = Sekolah::findOrFail($id);
+        $sekolah->delete();
     }
 }
