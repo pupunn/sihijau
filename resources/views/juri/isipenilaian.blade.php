@@ -91,7 +91,7 @@
                                         <button class="btn btn-info btn-sm" type="button" data-toggle="modal"
                                             id="btn_nilai{{ $indikator->id_indikator }}"
                                             data-target="#modal-nilai{{ $indikator->id_indikator }}"><i
-                                                class="fa fa-pencil"></i> Nilai</button>
+                                                class="fa fa-pencil"></i> Nilai </button>
                                         @endif
                                     </td>
                             </tr>

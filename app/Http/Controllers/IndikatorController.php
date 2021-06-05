@@ -27,8 +27,8 @@ class IndikatorController extends Controller
     public function downloadTemplate($id)
     {
         $lampiran = Indikator::where('id_indikator', $id)->first();
-        $filename = $lampiran->value('template');
-        $path = '/admin/template/' . $lampiran->value('template');
+        $filename = $lampiran->template;
+        $path = '/admin/template/' . $filename;
         return Storage::download($path, $filename);
     }
 

@@ -21,6 +21,8 @@ class SekolahController extends Controller
 
     public function store(SekolahRequest $request)
     {
+        $ext = request()->file('file_peta_lokasi' . request('id'))->getClientOriginalExtension();
+
         Sekolah::create([
             "npsn" => $request['npsn'],
             "file_npsn" => $request['file_npsn'] ? request()->file('file_npsn')->store('daftar/sekolah') : null,
@@ -50,8 +52,8 @@ class SekolahController extends Controller
     public function downloadLampiran($id, $i)
     {
         $lampiran = Sekolah::where('id', $id)->first();
-        $filename = $i . ' ' . $lampiran->value('nama_sekolah');
-        $path = $lampiran->value($i);
+        $filename = $i . ' ' . $lampiran->nama_sekolah;
+        $path = $lampiran->$i;
         return Storage::download($path, $filename);
     }
 
@@ -64,7 +66,7 @@ class SekolahController extends Controller
         // dd($sekolah);
 
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
-        $password = substr($random, 0, 10);
+        $password = substr($random, 0, 6);
 
         $user = User::create([
             'id_sekolah' => $sekolah->id,
@@ -86,7 +88,7 @@ class SekolahController extends Controller
         $sekolah = Sekolah::findOrFail($id);
 
         $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
-        $password = substr($random, 0, 10);
+        $password = substr($random, 0, 6);
 
         $user = User::where('id_sekolah', $id)->first();
         // dd($user);
