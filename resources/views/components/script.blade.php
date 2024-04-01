@@ -218,6 +218,6 @@
     jQuery(document).ready(function() {
     $(".dropdown-toggle").dropdown();
 }); --}}
-</script>
+{{-- </script> --}}
 
 @stack('local-script')
