@@ -106,7 +106,7 @@
                                 <tr>
                                     <th>Indikator</th>
                                     <th>Waktu</th>
-                                    <th>Unduh</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,6 +114,12 @@
                                 <tr id="tbl-bukti">
                                     <td>{{ $bukt->indikator->nama_indikator }} </td>
                                     <td>{{ $bukt->updated_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-danger"
+                                            href="{{ route('delete.lampiran', $bukt->id_bukti) }}">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a class="btn btn-sm btn-info"
                                             href="{{ route('download.lampiran', $bukt->id_bukti) }}">

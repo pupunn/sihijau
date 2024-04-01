@@ -1,5 +1,5 @@
-@foreach ($indikator1 as $i)
-<div class="modal bs-example-modal-lg fade" id="modal-nilai{{$i->id_indikator}}" tabindex="-1">
+@for ($j = 1; $j <= $jml_aspek; $j++) @foreach (${'indikator'.$j} as $i) <div class="modal bs-example-modal-lg fade"
+    id="modal-nilai{{$i->id_indikator}}" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,9 +58,9 @@
             </form>
         </div>
     </div>
-</div>
-<script>
-    jQuery(document).ready(function ($) {
+    </div>
+    <script>
+        jQuery(document).ready(function ($) {
           $('#isian{{$i->id_indikator}}').on('submit',(function(e) {
             $.ajaxSetup({
               headers: {
@@ -94,5 +94,6 @@
             });
           }));
         });
-</script>
-@endforeach
+    </script>
+    @endforeach
+    @endfor

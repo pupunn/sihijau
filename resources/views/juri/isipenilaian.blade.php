@@ -71,8 +71,8 @@
                                     <td id="nilaijuri_{{ $indikator->id_indikator }}">{{ $nil->nilai_juri }}</td>
                                     @endif
                                     @else
-                                    <td class="table-success">-</td>
-                                    <td id="nilaijuri_{{ $indikator->id_indikator }}">-</td>
+                                    <td class="table-success"> -</td>
+                                    <td id="nilaijuri_{{ $indikator->id_indikator }}"> -</td>
                                     @endif
                                     <td>
                                         @php $bkti = $bukti->where('id_indikator', $indikator->id_indikator)->first();

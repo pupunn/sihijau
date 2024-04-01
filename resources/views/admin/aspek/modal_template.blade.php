@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label>Template Indikator<span class="text-danger">*</span></label>
                         <div class="controls">
-                            <input type="file" accept=".pdf, .docx, .doc" name="template{{$i->id_indikator}}"
+                            <input type="file" accept=".docx, .doc" name="template{{$i->id_indikator}}"
                                 class="form-control" required data-validation-required-message="This field is required">
                             <input type="text" name="id" value="{{ $i->id_indikator }}" hidden>
                         </div>

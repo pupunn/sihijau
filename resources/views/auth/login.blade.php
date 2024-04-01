@@ -20,7 +20,12 @@
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="current-password" placeholder="Password" />
                 </div>
-                <button type="submit" class="btn solid"> Login </button>
+                <div class="button">
+                    <input type="button" value="Download Panduan"
+                        onclick='location.href=&quot;{{ asset("storage/PANDUAN UNNES GSR 2022_19082022_plus.pdf") }} &quot;'
+                        class="btn linear" />
+                    <button type="submit" class="btn solid"> Login </button>
+                </div>
             </form>
             <form action="{{ route('sekolah.daftar') }}" class="sign-up-form">
                 <h2 class="title">Register</h2>
@@ -39,6 +44,9 @@
                 <button class="btn transparent" id="sign-up-btn">
                     Sign up
                 </button>
+                <a href={{ route('contact') }}><button class="btn transparent" id="contact-btn">
+                        Contact
+                    </button></a>
             </div>
             <img src="{{ asset('assets/img/UnnesGSR.png') }}" class="image" alt="" />
         </div>
@@ -57,4 +65,5 @@
     </div>
 </div>
 
+<script src="{{ asset('/assets/js/app.js') }}"></script>
 @endsection

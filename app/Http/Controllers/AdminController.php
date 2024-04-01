@@ -51,6 +51,7 @@ class AdminController extends Controller
             'id_periode' => request('periode'),
             'urutan' => request('urutan'),
             'tahun' => request('tahun'),
+            'is_visible' => request('is_visible'),
         ]);
 
         $periode = Periode::findOrFail(request('periode'));
@@ -69,6 +70,7 @@ class AdminController extends Controller
             'id_periode' => request('periode'),
             'urutan' => request('urutan'),
             'tahun' => request('tahun'),
+            'is_visible' => request('is_visible'),
         ]);
 
         $periode = Periode::findOrFail(request('periode'));

@@ -27,7 +27,12 @@
                         @foreach ($indikator as $i)
                         <tr>
                             <td class="serial">{{ $i->urutan }}.</td>
-                            <td>{{ $i->nama_indikator }} </td>
+                            <td>
+                                {{ $i->nama_indikator }}
+                                @if ($i->is_visible == 0)
+                                    <i class="menu-icon fa fa-eye-slash">
+                                @endif
+                            </td>
                             <td>{{ $i->aspek->nama_aspek }}</td>
                             <td>{{ $i->periode->nama }}</td>
                             <td>

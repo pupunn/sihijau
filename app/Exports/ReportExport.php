@@ -20,7 +20,7 @@ class ReportExport implements FromView
         $jml_aspek = Aspek::count();
         for ($i = 1; $i <= 6; $i++) {
             ${'aspek' . $i} = Aspek::where('id_aspek', $i)->get();
-            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->get();
+            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->where('is_visible', 1)->get();
         }
 
         return view('juri.laporanExcel', compact('sekolah', 'indikator1', 'indikator2', 'indikator3', 'indikator4', 'indikator5', 'indikator6', 'jml_aspek', 'aspek1', 'aspek2', 'aspek3', 'aspek4', 'aspek5', 'aspek6'));

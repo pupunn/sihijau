@@ -25,15 +25,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-2">
+                    {{-- <div class="stat-icon dib flat-color-2">
                         <i class="pe-7s-culture"></i>
+                    </div> --}}
+                    {{-- <div class="stat-content"> --}}
+                    <div class="text-left dib">
+                        <div class="stat-text">Download Panduan</div>
+                        <div class="stat-heading"><a href="{{ asset("storage/PANDUAN UNNES GSR 2021 - Juri.pdf") }}"
+                                class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download </a></div>
                     </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-text"><span class="count">{{ $sekolah }}</span></div>
-                            <div class="stat-heading">Sekolah</div>
-                        </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>

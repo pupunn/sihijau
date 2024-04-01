@@ -36,8 +36,8 @@ class PostMail extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@gsr.com')
-            ->subject('Berkas Berhasil Terverifikasi')
+        return $this->from('noreply@gsr.unnes.ac.id')
+            ->subject('Verifikasi Berkas Pendaftaran GSR UNNES')
             ->view('emails.posts');
     }
 }

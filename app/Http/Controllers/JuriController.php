@@ -20,7 +20,7 @@ class JuriController extends Controller
 {
     public function sekolah()
     {
-        $sekolah = Sekolah::orderBy('id', 'asc')->get();
+        $sekolah = Sekolah::where('is_confirmed', 1)->orderBy('id', 'asc')->get();
         $nilai = Nilai::orderBy('nilai', 'asc')->get();
         return view('juri.listsekolah', compact('sekolah', 'nilai'));
     }
@@ -28,12 +28,12 @@ class JuriController extends Controller
     public function isian($id)
     {
         $jml_aspek = Aspek::count();
-        $sekolah = Sekolah::where('id', $id)->first();
+        $sekolah = Sekolah::where('id', $id)->where('is_confirmed', 1)->firstOrFail();
         for ($i = 1; $i <= 6; $i++) {
             ${'aspek' . $i} = Aspek::where('id_aspek', $i)->get();
-            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
+            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->where('is_visible', 1)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
         }
-        $nilai = Nilai::where('id_sekolah', $id)->get();
+        $nilai = Nilai::where('id_sekolah', $id)->where('tahun', date('Y'))->get();
         $bukti = Bukti::where('id_sekolah', $id)->get();
         $nilai_juri = Nilai_juri::where('id_juri', Auth::user()->id)->get();
         $kriteria_penilaian = Kriteria_penilaian::get();
@@ -51,7 +51,12 @@ class JuriController extends Controller
                     'tahun' => date('Y')
                 ],
                 [
+                    // 'id_sekolah' => request("id_sekolah"),
+                    // 'nilai'      => request("nilai") ?? 0,
                     'nilai_juri' => request('nilai'),
+                    // 'id_juri'    => Auth::user()->id,
+                    // 'tahun'      => date('Y'),
+                    // 'id_indikator'  => request("id")
                 ]
             );
         }
@@ -61,21 +66,21 @@ class JuriController extends Controller
 
     public function downloadLampiran($id)
     {
-        $bukti = Bukti::findOrFail($id);
-        $filename = $bukti->value('path');
-        $path = '/bukti/' . $bukti->value('path');
+        $bukti = Bukti::where('id_bukti', $id)->first();
+        $filename = $bukti->path;
+        $path = '/bukti/' . $filename;
         return Storage::download($path, $filename);
     }
 
     public function cetakPdf($id)
     {
         $jml_aspek = Aspek::count();
-        $sekolah = Sekolah::where('id', $id)->first();
-        for ($i = 1; $i <= 6; $i++) {
+        $sekolah = Sekolah::where('id', $id)->where('is_confirmed', 1)->firstOrFail();
+        for ($i = 1; $i <= 7; $i++) {
             ${'aspek' . $i} = Aspek::where('id_aspek', $i)->get();
-            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
+            ${'indikator' . $i} = Indikator::where('id_aspek', $i)->where('id_periode', Auth::user()->id_periode)->where('is_visible', 1)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
         }
-        $nilai = Nilai::where('id_sekolah', $id)->get();
+        $nilai = Nilai::where('id_sekolah', $id)->where("tahun", date("Y"))->get();
         $bukti = Bukti::where('id_sekolah', $id)->get();
         $nilai_juri = Nilai_juri::where('id_juri', Auth::user()->id)->get();
         $kriteria_penilaian = Kriteria_penilaian::get();
@@ -91,8 +96,8 @@ class JuriController extends Controller
 
     public function downloadZipBukti($id)
     {
-        $sekolah_nama = Sekolah::where('id', $id)->value('nama_sekolah');
-        $bukti = Bukti::join('indikator', 'bukti.id_indikator', '=', 'indikator.id_indikator')->where('id_periode', Auth::user()->id_periode)->orderBy('id_aspek')->orderByRaw('CHAR_LENGTH(indikator.urutan)')->orderBy('indikator.urutan', 'asc')->get();
+        $sekolah_nama = Sekolah::where('id', $id)->where('is_confirmed', 1)->value('nama_sekolah');
+        $bukti = Bukti::join('indikator', 'bukti.id_indikator', '=', 'indikator.id_indikator')->where('id_periode', Auth::user()->id_periode)->where('is_visible', 1)->orderBy('id_aspek')->orderByRaw('CHAR_LENGTH(indikator.urutan)')->orderBy('indikator.urutan', 'asc')->get();
 
         return view('juri.zipBukti', compact('bukti', 'sekolah_nama'));
     }
