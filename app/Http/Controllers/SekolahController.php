@@ -54,9 +54,11 @@ class SekolahController extends Controller
     public function downloadLampiran($id, $i)
     {
         $lampiran = Sekolah::where('id', $id)->first();
+
         $path = $lampiran->$i;
         $ext = File::extension($path);
         $filename = $i . ' ' . $lampiran->nama_sekolah.'.'.$ext;
+
         return Storage::download($path, $filename);
     }
 
