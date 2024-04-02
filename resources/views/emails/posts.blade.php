@@ -21,7 +21,7 @@
             <td>{{ $npsn }}</td>
         </tr>
         <tr>
-            <td>Email Operator Sekolah</td>
+            <td>Username / Email Operator Sekolah</td>
             <td>{{ $email }}</td>
         </tr>
         <tr>

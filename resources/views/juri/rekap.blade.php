@@ -64,7 +64,7 @@
                         </tr>
                         @for ($j = 1; $j <= $jml_aspek; $j++) <tr class="table-info">
                             @if ($j == 1)
-                            <td class="aspek">{{ $jml_aspek }}.</td>
+                            <td class="aspek">{{ $j }}.</td>
                             <td class="aspek">
                                 @foreach (${'aspek'.$j} as $aspek)
                                 {{ $aspek->nama_aspek }}
@@ -76,7 +76,7 @@
                             <td class="aspek center">4</td>
                             <td class="aspek" colspan="3"></td>
                             @else
-                            <td class="aspek">{{ $jml_aspek }}.</td>
+                            <td class="aspek">{{ $j}}.</td>
                             <td class="aspek" colspan="9">
                                 @foreach (${'aspek'.$j} as $aspek)
                                 {{ $aspek->nama_aspek }}

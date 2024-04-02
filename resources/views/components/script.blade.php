@@ -214,5 +214,10 @@
             // Bar Chart #flotBarChart End
         });
 </script> --}}
+{{-- <script>
+    jQuery(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+}); --}}
+</script>
 
 @stack('local-script')

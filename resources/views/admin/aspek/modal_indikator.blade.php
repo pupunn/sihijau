@@ -50,6 +50,14 @@
                                 @endfor
                         </select>
                     </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <div class="check-box">
+                                <input type="hidden" name="is_visible" value="0">
+                                <label><input type="checkbox" name="is_visible" value="1" class="form-check-input" checked>Tampilkan Indikator</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer modal-footer-uniform">
                 <button type="button" class="btn btn-bold btn-pure btn-secondary" data-dismiss="modal">Kembali</button>

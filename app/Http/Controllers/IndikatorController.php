@@ -12,12 +12,12 @@ class IndikatorController extends Controller
 {
     public function indikator($id)
     {
-        $indikator = Indikator::where('id_aspek', $id)->where('id_periode', Auth::user()->id_periode)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
+        $indikator = Indikator::where('id_aspek', $id)->where('id_periode', Auth::user()->id_periode)->where('is_visible', 1)->orderByRaw('CHAR_LENGTH(urutan)')->orderBy('urutan', 'asc')->get();
         $aspek = Aspek::where('id_aspek', $id)->first();
         $kriteria = Kriteria_penilaian::orderBy('bobot', 'asc')->get();
         $sub_indikator = Sub_indikator::get();
         $isian = Isian::where('id_sekolah', Auth::user()->id_sekolah)->get();
-        $nilai = Nilai::where('id_sekolah', Auth::user()->id_sekolah)->get();
+        $nilai = Nilai::where('id_sekolah', Auth::user()->id_sekolah)->where("tahun", date("Y"))->get();
         $bukti = Bukti::where('id_sekolah', Auth::user()->id_sekolah)->get();
         $aspeks = Aspek::all();
         // dd(Auth::user()->name);
@@ -26,9 +26,9 @@ class IndikatorController extends Controller
 
     public function downloadTemplate($id)
     {
-        $lampiran = Indikator::where('id_indikator', $id)->first();
-        $filename = $lampiran->value('template');
-        $path = '/admin/template/' . $lampiran->value('template');
+        $lampiran = Indikator::where('id_indikator', $id)->where('is_visible', 1)->first();
+        $filename = $lampiran->template;
+        $path = '/admin/template/' . $filename;
         return Storage::download($path, $filename);
     }
 
@@ -99,9 +99,19 @@ class IndikatorController extends Controller
 
     public function downloadLampiran($id)
     {
-        $bukti = Bukti::findOrFail($id);
-        $filename = $bukti->value('path');
-        $path = '/bukti/' . $bukti->value('path');
+        $bukti = Bukti::where('id_bukti', $id)->first();
+        $filename = $bukti->path;
+        $path = '/bukti/' . $filename;
         return Storage::download($path, $filename);
+    }
+
+    public function deleteLampiran($id)
+    {
+        $bukti = Bukti::where('id_bukti', $id)->first();
+        $filename = $bukti->path;
+        $path = '/bukti/' . $filename;
+        Storage::delete($path);
+        $bukti->delete();
+        return back();
     }
 }

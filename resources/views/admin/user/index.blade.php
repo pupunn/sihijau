@@ -34,7 +34,7 @@
                                 @if ($skl->is_confirmed == 1)
                                 <span class="badge badge-complete">Terverifikasi</span>
                                 @else
-                                <span class="badge badge-danger">Belum Tervirifikasi</span>
+                                <span class="badge badge-danger">Belum Terverifikasi</span>
                                 @endif
                             </td>
                             <td>
@@ -42,7 +42,11 @@
                                     class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Lihat </button>
                                 {{-- <button type="button" data-toggle="modal" data-target="#modal_edit_sekolah{{$skl->id}}"
                                 class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Ubah </button> --}}
+                                @if ($skl->is_confirmed == 0)
+                                <div endpoint="{{ route('sekolah.delete', $skl->id) }}" class="delete d-inline"></div>
+                                @else
                                 <div endpoint="{{ route('user.delete', $skl->id) }}" class="delete d-inline"></div>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
